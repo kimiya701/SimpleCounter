@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Counter</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container"> 
+        <h1>Simple Counter</h1>
+        <div class="counter" id="counter">0</div>
+        <button class="increment" onclick="incrementCounter()">Increment</button>
+        <button class="reset" onclick="resetCounter()">Reset</button>
+        <button class="decrement" onclick="decrementCounter()">Decrement</button>
+        <p  class="instruction">Use The buttons to change the counter value. It won't go bellow zero!</p>
+
+    </div>
+    <script>
+        let counterValue=0;
+        function incrementCounter(){
+            counterValue++;
+            updateCounterDisplay();
+        }
+
+        function decrementCounter(){
+            if(counterValue>0){
+                counterValue--;
+
+            }
+            updateCounterDisplay(true);
+           
+        }
+        function resetCounter(){
+            counterValue=0;
+            updateCounterDisplay();
+
+        }
+
+        function updateCounterDisplay(isDecrement=false){
+            const counterElement=document.getElementById('counter');
+            counterElement.textContent=counterValue;
+
+            if(counterValue>0){
+                counterElement.style.color='#28a745';
+            }else if(isDecrement){
+                counterElement.style.color='#dc3545';
+            }else{
+                counterElement.style.color= '#444';
+            }
+        }
+    </script>
+</body>
+</html>
